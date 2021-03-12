@@ -1,0 +1,19 @@
+body{
+    background-color:fuchsia;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#quest{
+    background-color: orange;
+}
+button {
+    background-color:blue;
+    border: none;
+    border-radius: 8px;
+    color:white;
+}
+#back{
+    background-color:lightskyblue;
+    border: none;
+    border-radius: 8px;
+    color:white;
+}
