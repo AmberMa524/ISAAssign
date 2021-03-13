@@ -202,8 +202,10 @@ let createFunc = function(){
                             console.log(this.responseText);
                             let value = document.getElementById(newQuestValue);
                             let value2 = document.getElementById(createf10);
+                            let value3 = document.getElementById(questTextVal);
                             value.innerHTML = "";
                             value2.innerHTML = "";
+                            value3.innerHTML = "";
                             loadQuestions();
                             let newButt = document.createElement(buttonVal);
                             newButt.id = createf24;
