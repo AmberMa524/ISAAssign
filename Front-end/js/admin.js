@@ -45,6 +45,20 @@ const createf25 = "removeAnswer";
 const questTextVal = "questions";
 const cq = "Create Question";
 
+//Formats Strings That Have Quotations
+function formatString(data){
+    let string = "";
+
+    for(let i = 0; i < data.length; i++){
+        if(data[i] == "'" || data[i] == '"'){
+            string += "\\";
+        }
+        string += data[i];
+    }
+
+    return string;
+}
+
 //Question Editor Creation
 function loadQuestions(){
     let xhttp = new XMLHttpRequest();
@@ -95,13 +109,13 @@ function loadQuestions(){
                         let newArr = [];
                         
                         for(let j = 0; j < ansArray.length; j++){
-                            let descriptionVal = document.getElementById(input + number + j).value;
+                            let descriptionVal = formatString(document.getElementById(input + number + j).value);
                             let corVal = document.getElementById(check + number + j).checked;
                             let anObj = {"AnsId": ansArray[j].AnsId, "AnsDesc": descriptionVal, "Corr": corVal};
                             newArr.push(anObj);
                         }
                         
-                        let newObj = {"Question":{"Qid": questionId, "Qdesc": questionDesc}, "Answer": newArr};
+                        let newObj = {"Question":{"Qid": questionId, "Qdesc": formatString(questionDesc)}, "Answer": newArr};
                         
                         let string = JSON.stringify(newObj);
                         
@@ -158,7 +172,7 @@ let createFunc = function(){
         || document.getElementById(createf15).value !== null){
                         
             for(let i = 1; i < ansNum; i++){
-                let val = document.getElementById(createf16 + i).value;
+                let val = formatString(document.getElementById(createf16 + i).value);
                 let val2 = document.getElementById(check + i).checked;
                 if(val2 === true){
                     hasOneCheck = 1;
@@ -172,7 +186,7 @@ let createFunc = function(){
             }
             if(hasOneCheck == 1){
                 if(hasNull == 0){
-                    let questionValue = document.getElementById(createf15).value;
+                    let questionValue = formatString(document.getElementById(createf15).value);
                     
                     let mainObj = {"Question" : questionValue,
                                     "Answers" : ansArray,
